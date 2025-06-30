@@ -6,6 +6,8 @@ import { prisma } from "@/lib/prisma";
 const Page = async () => {
   const snippets = await prisma.snippet.findMany();
 
+  if(!snippets) return <h1>No snippet Found</h1>
+
   return (
     <div className="">
       <h1 className="text-4xl font-bold">Home</h1>

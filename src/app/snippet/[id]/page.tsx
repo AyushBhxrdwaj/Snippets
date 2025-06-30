@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { Button } from "@/components/ui/button";
 import React from "react";
 import Link from "next/link";
-
+import * as actions  from "@/actions"
 export default async function SnippetPage({
   params,
 }: {
@@ -13,6 +13,8 @@ export default async function SnippetPage({
   const snippet = await prisma.snippet.findUnique({ where: { id } });
 
   if (!snippet) return <h1>Snippet Not Found</h1>;
+  const deleteSnippet = actions.deleteSnippet.bind(null,snippet.id)
+
 
   return (
     <div>
@@ -26,10 +28,12 @@ export default async function SnippetPage({
           <Link href={`/snippet/${snippet.id}/edit`}>
             <Button>Edit</Button>
           </Link>
-          <Button variant="destructive">Delete</Button>
+          <form action={deleteSnippet}>
+            <Button variant="destructive" type="submit">Delete</Button>
+          </form>
         </div>
       </div>
-      <pre className="mt-5 italic text-xl font-medium px-2 py-3  bg-red-900 rounded-xl border-3 border-gray-500 border-dotted">
+      <pre className="mt-5 italic text-xl  px-2 py-3 text-black font-bold  bg-slate-500 rounded-xl border-3 border-gray-500 border-dotted">
         {snippet.code}
       </pre>
     </div>
