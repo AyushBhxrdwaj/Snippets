@@ -30,16 +30,18 @@ export async function newSnippet(
     if (typeof code !== "string" || code.length < 8) {
       return { message: "Code is required" };
     }
-    const snippet = await prisma.snippet.create({
+    await prisma.snippet.create({
       data: {
         title,
         code,
       },
     });
-    throw new Error("Oops something went Wrong!!")
-  } catch (error:any) {
-    return {message:error.message}
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return { message: error.message };
+    } else {
+      return { message: "An unexpected error occurred" };
+    }
   }
-
-  redirect("/");
+  redirect('/')
 }

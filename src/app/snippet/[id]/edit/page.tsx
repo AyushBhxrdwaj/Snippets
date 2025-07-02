@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma'
 import React from 'react'
 
 const EditPage = async ({params}:{params:{id:string}}) => {
-    const id = parseInt((await params).id)
+    const id = parseInt(params.id)
     const snippet = await prisma.snippet.findUnique({
         where:{id}
     })

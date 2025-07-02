@@ -20,7 +20,7 @@ export default async function SnippetPage({
     <div>
       <div className="flex items-center justify-between">
         <Link href="/">
-          <h1 className="text-6xl font-bold bg-gradient-to-r from-gray-300 via-slate-400 to-red-500 bg-clip-text text-transparent">
+          <h1 className="text-6xl font-bold bg-gradient-to-r from-gray-300 via-purple-400 to-red-500 bg-clip-text text-transparent">
             {snippet.title}
           </h1>
         </Link>
@@ -33,7 +33,7 @@ export default async function SnippetPage({
           </form>
         </div>
       </div>
-      <pre className="mt-5 italic text-xl  px-2 py-3 text-black font-bold  bg-slate-500 rounded-xl border-3 border-gray-500 border-dotted">
+      <pre className="mt-5 italic text-xl  px-2 py-3 text-black font-bold  bg-gray-300 rounded-xl border-3 border-gray-500 border-dotted">
         {snippet.code}
       </pre>
     </div>

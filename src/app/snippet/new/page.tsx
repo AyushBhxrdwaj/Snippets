@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import * as actions from "@/actions"
+import New from "@/components/New";
 const createSnippet = () => {
   const [formStateData,req]=useActionState(actions.newSnippet,{message:""});
 
@@ -14,10 +15,11 @@ const createSnippet = () => {
         <Label>Title</Label>
         <Input type="text" name="title" id="title" />
       </div>
-      <div className="flex flex-col gap-3 mt-3">
+      {/* <div className="flex flex-col gap-3 mt-3">
         <Label>Code</Label>
         <Textarea name="code" id="code" />
-      </div>
+      </div> */}
+      <New/>
       {formStateData.message && <div className="p-2 mt-2 bg-red-400 border-2 border-gray-500 rounded-lg">{formStateData.message}</div>}
       <Button className="mt-3">New</Button>
     </form>
