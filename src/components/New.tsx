@@ -1,13 +1,16 @@
 "use client";
 import { Editor } from "@monaco-editor/react";
-import React from "react";
+import React, { useState } from "react";
 const New = () => {
+  const [code, setcode] = useState("//write your code")
   return (
     <div>
       <Editor
+        className="mt-3"
         height="40vh"
         language="javascript"
-        defaultValue="// Write your code here"
+        defaultValue={code}
+        onChange={(value="")=>{setcode(value)}}
         theme="vs-dark"
         options={{
           selectOnLineNumbers: true,
@@ -15,6 +18,7 @@ const New = () => {
           automaticLayout: true,
         }}
       />
+      <input type="hidden" name="code" value={code} />
     </div>
   );
 };
